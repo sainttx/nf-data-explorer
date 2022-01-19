@@ -68,6 +68,7 @@ function runShell(cmd, cwd, done) {
   const proc = spawn(command, args, {
     stdio: 'inherit',
     cwd: cwd ? path.resolve(cwd) : undefined,
+    shell: true
   });
   return proc.on('close', (status) => {
     if (status !== 0) {

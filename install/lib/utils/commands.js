@@ -3,7 +3,7 @@ const { startSpinner, stopSpinner } = require('./spinner');
 
 function runCommnand(cmd, args) {
   return new Promise((resolve, reject) => {
-    const yarnProcess = childProcess.spawn(cmd, args);
+    const yarnProcess = childProcess.spawn(cmd, { ...args, shell: true });
     let yarnOutput = '';
     yarnProcess.stdout.on('data', data => (yarnOutput += `${data}`));
     yarnProcess.stderr.on('data', data => (yarnOutput += `${data}`));
